@@ -1,3 +1,4 @@
+#This is a docker file
 # Use Gradle with JDK 11 as the base image
 FROM gradle:7-jdk11
 
@@ -9,6 +10,7 @@ RUN chmod +x gradlew
 
 RUN ./gradlew build
 
+#Exposing port 8080 based on line 118 of build.gradle file
 EXPOSE 8080
 
 CMD ["./gradlew", "apprun"]

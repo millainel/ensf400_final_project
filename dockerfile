@@ -10,6 +10,7 @@ RUN chmod +x gradlew
 
 RUN ./gradlew build
 
+#Exposing port 8080 based on line 118 of build.gradle file
 EXPOSE 8080
 
 CMD ["./gradlew", "apprun"]
