@@ -1,11 +1,14 @@
-FROM gradle:7.6.1-jdk11
-
-COPY . /app
+# Use Gradle with JDK 11 as the base image
+FROM gradle:7-jdk11
 
 WORKDIR /app
 
+COPY . /app
+
+RUN chmod +x gradlew
+
+RUN ./gradlew build
+
 EXPOSE 8080
 
-
-CMD ["./gradlew", "appRun"]
-
+CMD ["./gradlew", "apprun"]
