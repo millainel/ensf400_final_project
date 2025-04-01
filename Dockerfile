@@ -1,11 +1,11 @@
 FROM jenkins/jenkins:lts-alpine
-# Switch to root user to install Docker
-USER root
-# Install Docker
-RUN apk add --no-cache docker
-# Add Docker group and user to access Docker socket
-RUN addgroup jenkins docker
 
+USER root
+
+RUN apk update && \
+    apk add --no-cache docker openrc bash
+
+RUN addgroup jenkins docker
 #This is a docker file
 # Use Gradle with JDK 11 as the base image
 FROM gradle:7-jdk11
