@@ -1,16 +1,11 @@
 pipeline {
     agent {
-        docker { image 'gradle:7-jdk11' }
+        docker { image 'python:2-alpine' }
     }
     stages {
-        stage('Verify Docker') {
+        stage('Build') { 
             steps {
-                sh 'docker --version'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh './gradlew build'
+                sh './gradelw build'
             }
         }
     }
