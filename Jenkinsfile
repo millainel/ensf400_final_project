@@ -1,11 +1,26 @@
 pipeline {
-    agent {
-        docker { image 'python:2-alpine' }
-    }
+    agent any
+    
     stages {
-        stage('Build') { 
+        stage('Checkout') {
             steps {
-                sh './gradelw build'
+                checkout scm
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t myapp .'
+                }
+            }
+        }
+        
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    sh 'docker run -d --name myapp-container myapp'
+                }
             }
         }
     }
