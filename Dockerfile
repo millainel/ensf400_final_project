@@ -1,11 +1,10 @@
-# Stage 1: Install Docker in Jenkins container
-FROM jenkins/jenkins:alpine 
-# Switch to root user
+FROM jenkins/jenkins:lts-alpine
+# Switch to root user to install Docker
 USER root
-
-# Install Docker and openrc
-RUN apk add --update docker openrc
-
+# Install Docker
+RUN apk add --no-cache docker
+# Add Docker group and user to access Docker socket
+RUN addgroup jenkins docker
 
 #This is a docker file
 # Use Gradle with JDK 11 as the base image
