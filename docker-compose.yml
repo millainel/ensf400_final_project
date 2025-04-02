@@ -20,7 +20,7 @@ services:
   my-app:
     build:
       context: .
-      dockerfile: myapp.Dockerfile  
+      dockerfile: myapp.Dockerfile 
     container_name: my-app
     working_dir: /app
     volumes:
@@ -29,4 +29,4 @@ services:
     expose:
       - "8080"
     ports:
-      - "9090:8080"  
+      - "8080:8080"  # Forward 8080 from app to 9090 on host
