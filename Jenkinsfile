@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    triggers {
-        // Listen to GitHub pull request events for triggering the build
-        githubPullRequest()
-    }
+    // triggers {
+    //     // Listen to GitHub pull request events for triggering the build
+    //     githubPullRequest()
+    // }
 
     stages {
         stage('Checkout') {
