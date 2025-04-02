@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     triggers {
-        githubPullRequest {
-            events ['opened', 'reopened', 'synchronize'] 
-        }
+        // Listen to GitHub pull request events for triggering the build
+        githubPullRequest()
     }
 
     stages {
