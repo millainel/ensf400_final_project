@@ -1,16 +1,16 @@
 pipeline {
     agent any
 
-      triggers {
+    triggers {
         githubPullRequest {
-            prSourceBranchPattern('master')  
+            events ['opened', 'reopened', 'synchronize'] 
         }
     }
 
     stages {
         stage('Checkout') {
             steps {
-                checkout scm 
+                checkout scm
             }
         }
 
@@ -21,7 +21,5 @@ pipeline {
                 }
             }
         }
-
-        
     }
 }
