@@ -11,8 +11,19 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build the Docker image
                     sh 'docker build -t myapp .'
+                }
+            }
+        }
+
+        stage('Install Docker Compose') {
+            steps {
+                script {
+                    // Install Docker Compose dynamically
+                    sh '''
+                    curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    chmod +x /usr/local/bin/docker-compose
+                    '''
                 }
             }
         }
@@ -20,7 +31,6 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 script {
-                    // Deploy using Docker Compose
                     sh 'docker-compose -f docker-compose-deploy.yml up -d'
                 }
             }
@@ -29,13 +39,10 @@ pipeline {
         stage('Clean Up') {
             steps {
                 script {
-                    // Clean up Docker containers after deploy (optional)
                     sh 'docker-compose -f docker-compose-deploy.yml down'
                     sh 'docker system prune -f'
                 }
             }
         }
     }
-
-   
 }
