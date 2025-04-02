@@ -1,8 +1,10 @@
 pipeline {
     agent any
 
-    triggers {
-        githubPush()  
+      triggers {
+        githubPullRequest {
+            prSourceBranchPattern('master')  
+        }
     }
 
     stages {
