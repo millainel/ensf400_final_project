@@ -20,11 +20,10 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 script {
-                     sh 
-                     '''
+                     sh '''
                         docker stop myapp || true
-                         docker rm myapp || true
-                         docker run -d --name myapp -p 8080:8080 myapp
+                        docker rm myapp || true
+                        docker run -d --name myapp -p 8080:8080 myapp
                      '''
                 }
             }
