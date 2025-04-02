@@ -1,19 +1,19 @@
 version: '3'
+
 services:
   jenkins:
-    image: jenkins/jenkins:lts-alpine
+    build: .
     container_name: jenkins
     ports:
       - "8080:8080"
       - "50000:50000"
     volumes:
       - /workspaces/ensf400_final_project/jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock  
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
     privileged: true
-    user: root
+    user: root  
 
   gradle:
     image: gradle:7-jdk11

@@ -3,3 +3,5 @@ FROM jenkins/jenkins:alpine
 USER root
 # install docker on top of the base image
 RUN apk add --update docker openrc
+
+RUN addgroup jenkins docker
