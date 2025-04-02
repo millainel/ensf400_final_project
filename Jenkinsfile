@@ -23,7 +23,7 @@ pipeline {
                      sh '''
                         docker stop myapp || true
                         docker rm myapp || true
-                        docker run -d --name myapp myapp
+                        docker run -d --name myapp -p 9090:8080 myapp
                      '''
                 }
             }
