@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    sh 'docker build -t myapp .'
+                    sh 'docker build -t myapp -f myapp.Dockerfile .'
                 }
             }
         }
