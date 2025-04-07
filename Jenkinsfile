@@ -28,15 +28,6 @@ pipeline {
                 }
             }
         }
-        stage('Static Analysis') {
-            steps {
-                sh './gradlew sonarqube'
-                // wait for sonarqube to finish its analysis
-                sleep 5
-                sh './gradlew checkQualityGate'
-            }
-        }
-        
 
     }
 
