@@ -29,4 +29,4 @@ services:
     expose:
       - "8080"
     ports:
-      - "8080:8080"  # Forward 8080 from app to 9090 on host
+      - "8080:8080"  # Forward 8080 from app to 8080 on host
