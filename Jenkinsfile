@@ -33,6 +33,15 @@ pipeline {
                 withSonarQubeEnv('static'){
                     sh './gradlew sonarqube'
                 }
+                script{
+                    qualityGate = waitForQualityGate()
+                    if qualityGate.status != 'OK' {
+                        error "Quality gate failed: ${qualityGate.status}"
+                    } else {
+                        echo "Quality gate passed: ${qualityGate.status}"
+                    }
+                }
+
             }
         }
 
