@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'millainel/ensf400_final_project/tree/testing-sonarqube'
+        IMAGE_NAME = 'millainel/ensf400_final_project'
         TAG = "${GIT_COMMIT}"
         DOCKER_CREDENTIALS_ID = 'dockerhub'
         SONARQUBE_CREDENTIALS_ID = 'sonarqube'
