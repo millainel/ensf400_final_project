@@ -1,3 +1,5 @@
+jenkins_home/
+
 # ignore the gradle stuff that gets generated
 .gradle/
 

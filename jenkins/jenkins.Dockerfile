@@ -1,3 +1,11 @@
+# FROM jenkins/jenkins:alpine
+
+# # Switch to root user to install dependencies
+# USER root
+
+# # Install Docker inside Jenkins container
+# RUN apk add --update docker openrc
+
 FROM jenkins/jenkins:alpine
 
 # Switch to root user to install dependencies
@@ -6,13 +14,9 @@ USER root
 # Install Docker inside Jenkins container
 RUN apk add --update docker openrc
 
-# FROM jenkins/jenkins:alpine
+# Install Python 3, pip, and pipenv
+RUN apk add --no-cache python3 py3-pip \
+    && pip3 install --upgrade pip \
+    && pip3 install pipenv
 
-# # Switch to root user to install dependencies
-# USER root
 
-# # Install OpenJDK 17 and Docker inside Jenkins container
-# RUN apk add --no-cache openjdk17 docker openrc
-
-# # # Switch back to Jenkins user
-# # USER jenkins

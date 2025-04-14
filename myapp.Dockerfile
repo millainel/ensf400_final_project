@@ -1,6 +1,6 @@
 #This is a docker file
  # Use Gradle with JDK 11 as the base image
- FROM gradle:7-jdk11
+ FROM gradle:7-jdk17
  
  WORKDIR /app
  
