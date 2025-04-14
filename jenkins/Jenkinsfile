@@ -4,12 +4,12 @@ pipeline {
 
   agent any
   
-  triggers {
-        // This listens for GitHub PR events (created, updated, or closed)
-        // We could customize this (but here is just default, it will trigger the pipeline to run whenever there is pull request)
-        githubPullRequest {
-        }
-    }
+  // triggers {
+  //       // This listens for GitHub PR events (created, updated, or closed)
+  //       // We could customize this (but here is just default, it will trigger the pipeline to run whenever there is pull request)
+  //       githubPullRequest {
+  //       }
+  //   }
 
 
   environment {
