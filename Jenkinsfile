@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        // sqa_ee64ee060044c0d648b39e4307b4ba1bc5a4b667
         IMAGE_NAME = 'millainel/ensf400_final_project'
         TAG = "${GIT_COMMIT}"
         DOCKER_CREDENTIALS_ID = 'dockerhub'
@@ -46,7 +47,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
 
-                withSonarQubeEnv('static') { // Replace with your SonarQube server name
+                withSonarQubeEnv('sonarqube') { // Replace with your SonarQube server name
                     sh './gradlew sonarqube'
                 }
                 script{
