@@ -182,8 +182,6 @@ dependencies {
     // go to http://url/demo/monitoring
     // https://mvnrepository.com/artifact/net.bull.javamelody/javamelody-core
     implementation group: 'net.bull.javamelody', name: 'javamelody-core', version: '1.85.0'
-
-    implementation image: 'sonarqube:8.9.10-community', name: 'sonarqube', version: '8.9.10-community'
 }
 
 pitest {
