@@ -63,7 +63,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -136,10 +136,10 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
 
     // junit, for running unit tests
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.2'
 
     // mockito, for mocking objects in our unit tests
-    testImplementation 'org.mockito:mockito-core:3.3.3'
+    testImplementation 'org.mockito:mockito-core:3.11.2'
 
     // nbvcxz is a tool to determine how robust a password is.  See
     // https://github.com/GoSimpleLLC/nbvcxz
@@ -149,7 +149,7 @@ dependencies {
     // for equals and hashcode are met.  It's very strict.  Because it's very
     // strict, it forces us to create very safe, very solid code.
     // https://mvnrepository.com/artifact/nl.jqno.equalsverifier/equalsverifier
-    testImplementation group: 'nl.jqno.equalsverifier', name: 'equalsverifier', version: '3.1.13'
+    testImplementation group: 'nl.jqno.equalsverifier', name: 'equalsverifier', version: '3.7'
 
     testImplementation 'io.cucumber:cucumber-java:5.7.0'
     testImplementation 'io.cucumber:cucumber-junit:5.7.0'
@@ -157,16 +157,16 @@ dependencies {
     // The commons-lang3 package has some utility classes that are very helpful
     // for those interested in safer coding.  Particularly, the equalsbuilder and hashcodebuilder.
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 
     // a logging framework, so it becomes easily possible to see what is happening
     // in our code in realtime.
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.2'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.2'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
 
     // The following gives us the ability to use slf4j api calls.
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.13.2'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
 
     // we'll use this as our database
     // https://mvnrepository.com/artifact/com.h2database/h2
@@ -177,7 +177,7 @@ dependencies {
 
     // so we can programmatically run flyway at startup
     // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
-    implementation "org.flywaydb:flyway-core:6.4.1"
+    implementation "org.flywaydb:flyway-core:7.10.0"
 
     // provides monitoring of the application during runtime.
     // go to http://url/demo/monitoring
