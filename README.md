@@ -183,9 +183,4 @@ For example, to set it all up on a [local Windows box](https://raw.githubusercon
 ![SonarQube analysis](https://c2.staticflickr.com/8/7823/33202009548_e678128200_b.jpg)
 
 ![Running performance tests](https://c2.staticflickr.com/8/7854/47077017751_7e045f68dd_b.jpg)
-Test webhook changes
-Test webhook changes 2
-Test webhook changes 2
-Test webhook changes 3
-Test webhook changes 2
-trying again to trigger jenkins
+
