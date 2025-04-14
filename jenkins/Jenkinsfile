@@ -88,18 +88,18 @@ pipeline {
     // get it running, in preparation for tests that
     // require a whole system to be running.
     stage('Deploy to Test') {
-      steps {
-      sh './gradlew deployToTestWindowsLocal'
-      // pipenv needs to be installed and on the path for this to work.
-      sh 'PIPENV_IGNORE_VIRTUALENVS=1 pipenv install'
+      // steps {
+      // sh './gradlew deployToTestWindowsLocal'
+      // // pipenv needs to be installed and on the path for this to work.
+      // sh 'PIPENV_IGNORE_VIRTUALENVS=1 pipenv install'
 
 
-      // Wait here until the server tells us it's up and listening
-      sh './gradlew waitForHeartBeat'
+      // // Wait here until the server tells us it's up and listening
+      // sh './gradlew waitForHeartBeat'
 
-      // clear Zap's memory for the incoming tests
-      sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
-      }
+      // // clear Zap's memory for the incoming tests
+      // sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
+      // }
       
       // steps {
       //   // Make sure pipenv is installed
@@ -117,6 +117,26 @@ pipeline {
       //   // clear Zap's memory for the incoming tests
       //   sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
       // }
+
+        steps {
+          // Check python version
+          sh 'python --version'
+
+          // Check pipenv version
+          sh 'pipenv --version'
+
+          // Install pipenv if not already installed
+          sh 'python -m pip install pipenv'
+
+          // Install dependencies using pipenv
+          sh 'PIPENV_IGNORE_VIRTUALENVS=1 pipenv install'
+
+          // Wait for the server to be up and listening
+          sh './gradlew waitForHeartBeat'
+
+          // clear Zap's memory for the incoming tests
+          sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
+        }
 
     }
 
