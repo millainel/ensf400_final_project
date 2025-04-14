@@ -88,34 +88,35 @@ pipeline {
     // get it running, in preparation for tests that
     // require a whole system to be running.
     stage('Deploy to Test') {
-      // steps {
-      // sh './gradlew deployToTestWindowsLocal'
-      // // pipenv needs to be installed and on the path for this to work.
-      // sh 'PIPENV_IGNORE_VIRTUALENVS=1 pipenv install'
-
-      // // Wait here until the server tells us it's up and listening
-      // sh './gradlew waitForHeartBeat'
-
-      // // clear Zap's memory for the incoming tests
-      // sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
-      // }
-      
       steps {
-        // Make sure pipenv is installed
-        sh '''
-          if ! command -v pipenv &>/dev/null; then
-            echo "pipenv not found, installing..."
-            python -m pip install pipenv
-          fi
-          PIPENV_IGNORE_VIRTUALENVS=1 pipenv install
-        '''
+      sh './gradlew deployToTestWindowsLocal'
+      // pipenv needs to be installed and on the path for this to work.
+      sh 'PIPENV_IGNORE_VIRTUALENVS=1 pipenv install'
 
-        // Wait here until the server tells us it's up and listening
-        sh './gradlew waitForHeartBeat'
 
-        // clear Zap's memory for the incoming tests
-        sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
+      // Wait here until the server tells us it's up and listening
+      sh './gradlew waitForHeartBeat'
+
+      // clear Zap's memory for the incoming tests
+      sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
       }
+      
+      // steps {
+      //   // Make sure pipenv is installed
+      //   sh '''
+      //     if ! command -v pipenv &>/dev/null; then
+      //       echo "pipenv not found, installing..."
+      //       python -m pip install pipenv
+      //     fi
+      //     PIPENV_IGNORE_VIRTUALENVS=1 pipenv install
+      //   '''
+
+      //   // Wait here until the server tells us it's up and listening
+      //   sh './gradlew waitForHeartBeat'
+
+      //   // clear Zap's memory for the incoming tests
+      //   sh 'curl http://zap/JSON/core/action/newSession -s --proxy localhost:9888'
+      // }
 
     }
 
