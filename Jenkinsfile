@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = 'millainel/ensf400_final_project'
+        TAG = "${GIT_COMMIT}"
+        DOCKER_CREDENTIALS_ID = 'dockerhub'
+        SONARQUBE_CREDENTIALS_ID = 'sonarqube'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -13,6 +20,14 @@ pipeline {
                 script {
                     // Build the Docker image
                     sh 'docker build -t myapp -f myapp.Dockerfile .'
+                }
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                script {
+                    // Run tests inside the Docker container
+                    sh 'docker run --rm myapp ./gradlew test'
                 }
             }
         }
@@ -31,7 +46,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
 
-                withSonarQubeEnv('static') {
+                withSonarQubeEnv('static') { // Replace with your SonarQube server name
                     sh './gradlew sonarqube'
                 }
                 script{
