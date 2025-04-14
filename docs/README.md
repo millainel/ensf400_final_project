@@ -1,3 +1,3 @@
 ## SonarCube Screenshots
 
-<img src="screenshots/pipeline.png"/>
+<img src="screenshots/pipeline.jpg"/>
