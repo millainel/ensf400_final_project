@@ -184,3 +184,20 @@ For example, to set it all up on a [local Windows box](https://raw.githubusercon
 
 ![Running performance tests](https://c2.staticflickr.com/8/7854/47077017751_7e045f68dd_b.jpg)
 
+
+
+To setup the webhooks:
+1. install ngrok by running these commands in your codespace terminal:
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \
+echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && \
+sudo apt update && sudo apt install ngrok
+2. run this command in your codespace terminal to expose it (you might have tp create a free account first):
+ngrok http 8081
+3. get the url (for example mine was "https://b010-4-155-45-96.ngrok-free.app/", then add "github-webhook/" to it, so it might look like this "https://b010-4-155-45-96.ngrok-free.app/github-webhook/")
+4. then in the github repo, we went to settings, webhooks, and we created a new one where the payload URL is the url from the previous step
+5. we configured it so it triggers for both pushes and pull requests
+6. when we created our pipeline we configured it with "GitHub hook trigger for GITScm polling
+?" and "Trigger builds remotely (e.g., from scripts)" selected.
+
+
+
