@@ -24,6 +24,8 @@ pipeline {
     // place that happens.
     stage('Build') {
       steps {
+        sh 'java -version'
+        sh './gradlew --version'
         sh './gradlew clean assemble'
       }
     }
