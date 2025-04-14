@@ -49,6 +49,7 @@ pipeline {
 
                 withSonarQubeEnv('sonarqube') { // Replace with your SonarQube server name
                     sh './gradlew sonarqube'
+                    
                 }
                 script{
                     qualityGate = waitForQualityGate()
