@@ -58,7 +58,6 @@ plugins {
     // specify an exact version of the JDK to use when compiling,
     // and will pull it down if not found on the user's machine.
     id "java-library"
-
 }
 
 java {
@@ -184,6 +183,7 @@ dependencies {
     // https://mvnrepository.com/artifact/net.bull.javamelody/javamelody-core
     implementation group: 'net.bull.javamelody', name: 'javamelody-core', version: '1.85.0'
 
+    implementation image: 'sonarqube:8.9.10-community', name: 'sonarqube', version: '8.9.10-community'
 }
 
 pitest {
